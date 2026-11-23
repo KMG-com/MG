@@ -1,0 +1,10 @@
+#!/bin/bash
+
+read -p "Enter server (user@server_ip): " SERVER
+
+if [ -z "$SERVER" ]; then
+    echo "Error: Server address cannot be empty."
+    exit 1
+fi
+
+ssh "$SERVER" "echo '=== Disk Space ===' && df -h / && echo -e '\n=== Available RAM ===' && free -h"
