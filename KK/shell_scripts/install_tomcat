@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if dpkg -l | grep -qE "^ii.*(tomcat9|tomcat10)"; then
+    echo "Tomcat already exists."
+    exit 0
+fi
+
+echo "Starting Apache Tomcat 10 installation..."
+sudo apt update && sudo apt install -y tomcat10
+
+if systemctl is-active --quiet tomcat10; then
+    echo "Installation complete! Tomcat 10 service is UP and RUNNING."
+else
+    echo "Installation finished, but Tomcat 10 failed to start. Check: systemctl status tomcat10"
+    exit 1
+fi
