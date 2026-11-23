@@ -1,0 +1,5 @@
+#!/bin/bash
+
+DEST="/backups"
+mkdir -p "$DEST"
+sudo zip -rq "$DEST/var_backup-$(date +%F).zip" /var/log
