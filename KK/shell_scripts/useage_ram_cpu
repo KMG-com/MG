@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "   TOP 5 PROCESSES BY CPU USAGE"
+
+ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head -n 6
+
+
+echo "   TOP 5 PROCESSES BY RAM USAGE"
+
+ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head -n 6
